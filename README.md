@@ -1,4 +1,4 @@
-# Project title
+# OpenCL FAST keypoint detection
 
 Simple OpenCL implementation of FAST keypoint detection algorithm.
 
