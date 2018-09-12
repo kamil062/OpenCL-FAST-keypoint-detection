@@ -3,6 +3,7 @@
 Simple OpenCL implementation of FAST keypoint detection algorithm.
 
    [Faster and better: A machine learning approach to corner detection, E. Rosten, R. Porter and T. Drummond, PAMI 2010](https://www.edwardrosten.com/work/rosten_2008_faster.pdf)
+   
    [Machine learning for high-speed corner detection, E. Rosten and T. Drummond, ECCV 2006](https://www.edwardrosten.com/work/rosten_2006_machine.pdf)
 
 Code example 
