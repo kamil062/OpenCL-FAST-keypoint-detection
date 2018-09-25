@@ -32,7 +32,7 @@ def fast_detect(ctx, queue, image, N=12, threshold=10, nonmax=True):
     d_is_keypoint = cl.Buffer(ctx, cl.mem_flags.WRITE_ONLY, h_is_keypoint.nbytes)
     d_scores = cl.Buffer(ctx, cl.mem_flags.WRITE_ONLY, h_scores.nbytes)
 
-    prg = cl.Program(ctx, open("kernel.cl", "r").read()).build()
+    prg = cl.Program(ctx, open(os.path.dirname(__file__) + "\kernel.cl", "r").read()).build()
 
     prg.fast_detect(queue, (w, h), None,
                     h_image, np.int32(w), np.int32(h), np.int32(N), np.float32(threshold),
@@ -47,12 +47,12 @@ def fast_detect(ctx, queue, image, N=12, threshold=10, nonmax=True):
 
     if nonmax:
         sc = np.zeros(image.shape)
-        for i in range(len(corners)):
+        for i in range(len(corners)-1):
             sc[corners[i][0], corners[i][1]] = scores[i]
 
         nonmax_keypoints = []
 
-        for i in range(len(corners)):
+        for i in range(len(corners)-1):
             s = scores[i]
             y = corners[i][0]
             x = corners[i][1]
